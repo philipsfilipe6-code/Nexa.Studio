@@ -1,0 +1,167 @@
+/* ===== 1. TOKENS — FUSÃO: escuro de precisão (Linear) + preto/branco técnico (Vercel) + brilho e bento (Stripe) + tipografia gigante (Apple). Claro disponível pelo botão ◐ ===== */
+:root{
+  --bg:#07090F; --surface:#0D1119; --ink:#F5F7FA; --muted:#8E97AD; --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.2);
+  --glass:rgba(255,255,255,.035); --brand:#7C93FF; --cta:#FFB020; --cta-ink:#1A1204; --ok:#34D399;
+  --hero:#07090F; --hero-ink:#F5F7FA; --foot:#05070C;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif; --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme="light"]{--bg:#FAFAF7;--surface:#FFFFFF;--ink:#0A0F1E;--muted:#586079;--line:rgba(10,15,30,.1);--line2:rgba(10,15,30,.25);--glass:rgba(10,15,30,.025);--brand:#2F4BFF;--ok:#0F7B5F}
+
+/* ===== 2. BASE ===== */
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0 0 .5em;font-weight:650;letter-spacing:-.035em;line-height:1.05}
+h2{font-size:clamp(2.1rem,5.5vw,4rem);text-align:center;max-width:18ch;margin:0 auto .5em}
+h3{font-size:1.2rem;letter-spacing:-.02em;line-height:1.25}
+p{margin:0 0 1em;color:var(--muted)} a{color:inherit}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+section{padding:140px 0}
+section+section,.logos+section{border-top:1px solid var(--line)}
+section[style*="surface"]{background:transparent!important}
+/* Etiqueta em cápsula (Stripe/Linear) */
+.eyebrow{display:table;margin:0 auto 22px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--glass);font:600 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+section .wrap>h2+p{margin:0 auto 56px;text-align:center}
+.grid{display:grid;gap:16px}.g3{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.note{font:.78rem var(--mono);color:var(--muted)}
+
+/* ===== 3. CARTÕES: vidro + borda fina + brilho que segue o cursor (Linear) ===== */
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;margin:0;overflow:hidden;transition:border-color .25s,transform .25s}
+.card:hover{border-color:var(--line2)}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(280px at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--brand) 18%,transparent),transparent 70%)}
+.card:hover::after{opacity:1}
+.card h3{margin:14px 0 8px}
+
+/* ===== 4. BOTÕES ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;font:650 1rem var(--font);text-decoration:none;border:1px solid var(--line2);cursor:pointer;color:var(--ink);background:var(--glass);transition:transform .15s,box-shadow .15s,background .15s}
+.btn:hover{transform:translateY(-2px);background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.btn-cta{background:var(--cta);color:var(--cta-ink);border-color:var(--cta);box-shadow:0 10px 40px -10px rgba(255,176,32,.6)}
+.btn-cta:hover{background:#FFC04D}
+.btn-ghost{background:transparent}
+
+/* ===== 5. HEADER ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;height:64px}
+.logo{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;letter-spacing:.02em;text-decoration:none}
+.logo b{color:var(--brand)}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-size:.88rem;font-weight:500;color:var(--muted);transition:color .15s}
+nav a:hover{color:var(--ink)}
+header .btn{min-height:40px;padding:0 18px;font-size:.88rem}
+.menu-btn{display:none}
+.tg{min-height:40px;min-width:40px;border-radius:50%;border:1px solid var(--line);background:var(--glass);color:var(--ink);font-size:1rem;cursor:pointer}
+@media(max-width:860px){
+  nav ul{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg);padding:18px 22px;border-bottom:1px solid var(--line)}
+  nav ul.open{display:flex}
+  .menu-btn{display:inline-flex;align-items:center;background:var(--glass);border:1px solid var(--line);color:var(--ink);border-radius:999px;min-height:40px;padding:0 16px;font:500 .85rem var(--font)}
+  header .btn-cta{display:none}
+}
+
+/* ===== 6. HERO: centrado (Apple), aurora (Stripe), grelha (Vercel), título em degradé (Linear) ===== */
+.hero{position:relative;overflow:hidden;background:var(--hero);color:var(--hero-ink);text-align:center;padding:180px 0 90px;border:0}
+.hero::before{content:"";position:absolute;inset:-25% -10% auto;height:75%;pointer-events:none;filter:blur(50px);background:radial-gradient(40% 50% at 25% 30%,rgba(79,107,255,.5),transparent 70%),radial-gradient(35% 45% at 72% 20%,rgba(168,85,247,.38),transparent 70%),radial-gradient(30% 40% at 52% 62%,rgba(34,211,238,.24),transparent 70%)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(70% 60% at 50% 25%,#000,transparent);mask-image:radial-gradient(70% 60% at 50% 25%,#000,transparent)}
+.hero .eyebrow{color:#C9D0E4;border-color:rgba(255,255,255,.14)}
+.hero .eyebrow::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:10px;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.hero h1{font-size:clamp(3rem,10vw,8rem);line-height:.95;letter-spacing:-.055em;max-width:13ch;margin:0 auto .4em;background:linear-gradient(180deg,#fff 35%,#8E97AD);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 em{font:italic 400 1em var(--serif);letter-spacing:-.03em;-webkit-text-fill-color:var(--cta);color:var(--cta)}
+.hero p.lead{font-size:1.25rem;max-width:580px;margin:0 auto;color:#AEB7CD}
+.hero .btn{color:var(--hero-ink)}.hero .btn-cta{color:var(--cta-ink)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:38px 0 26px}
+.proof{font:.78rem var(--mono);color:#8E97AD;display:flex;justify-content:center}
+.avatars{display:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:80px;border:1px solid rgba(255,255,255,.1);border-radius:24px;background:rgba(255,255,255,.03);backdrop-filter:blur(8px);overflow:hidden}
+.stat{padding:26px 16px;font:.72rem var(--mono);color:#8E97AD;text-transform:uppercase;letter-spacing:.08em;border-left:1px solid rgba(255,255,255,.08)}
+.stat:first-child{border-left:0}
+.stat strong{display:block;font:650 2.2rem var(--font);letter-spacing:-.04em;color:#fff;text-transform:none;margin-bottom:4px}
+
+/* ===== 7. FAIXA DE TECNOLOGIAS (marquee com bordas esfumadas) ===== */
+.logos{background:var(--bg);border-top:1px solid var(--line);overflow:hidden;padding:26px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.logos .track{display:flex;width:max-content;animation:mq 68s linear infinite;will-change:transform}
+.logos .grp{display:flex;gap:56px;padding-right:56px}
+.logos span{font:650 1.1rem var(--font);letter-spacing:.04em;color:var(--muted);white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ===== 8. SOLUÇÕES: BENTO GRID (Stripe/Apple) ===== */
+.ico{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;color:var(--brand);background:color-mix(in srgb,var(--brand) 14%,transparent);border:1px solid color-mix(in srgb,var(--brand) 25%,transparent)}
+@media(min-width:900px){
+  #solucoes .grid{grid-template-columns:repeat(6,1fr)}
+  #solucoes .card{grid-column:span 2;min-height:230px}
+  #solucoes .card:nth-child(1),#solucoes .card:nth-child(4){grid-column:span 4}
+  #solucoes .card:nth-child(5),#solucoes .card:nth-child(6){grid-column:span 3}
+  #solucoes .card:nth-child(1){background:radial-gradient(90% 120% at 100% 0,color-mix(in srgb,var(--brand) 22%,transparent),transparent 60%),var(--surface)}
+}
+
+/* ===== 9. PORTFÓLIO: painéis com brilho de cor próprio ===== */
+.thumb{height:210px;margin:-6px -6px 18px;display:flex;align-items:flex-end;padding:18px;border-radius:16px;color:#fff;font:650 1.7rem var(--font);letter-spacing:-.04em;border:1px solid var(--line);background:radial-gradient(120% 140% at 15% 0,var(--h,#4F6BFF),transparent 62%),#0B0E16}
+#portfolio .card:nth-child(1){--h:#4F6BFF}#portfolio .card:nth-child(2){--h:#10B981}#portfolio .card:nth-child(3){--h:#A855F7}
+#portfolio .card:nth-child(4){--h:#F59E0B}#portfolio .card:nth-child(5){--h:#22D3EE}#portfolio .card:nth-child(6){--h:#F43F5E}
+.tag{display:block;font:600 .68rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.psr{margin:0 0 16px;display:grid;gap:2px}
+.psr dt{font:700 .66rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-top:10px}
+.psr dd{margin:0;color:var(--muted);font-size:.93rem;line-height:1.5}
+.link{font-weight:650;color:var(--brand);text-decoration:none}
+.link:hover{text-decoration:underline}
+
+/* ===== 10. DEPOIMENTOS, PROCESSO, FAQ ===== */
+blockquote{margin:0 0 18px;font:500 1.12rem/1.5 var(--font);letter-spacing:-.01em;color:var(--ink)}
+.who{font:.74rem var(--mono);color:var(--muted)}.who strong{color:var(--ink)}
+.steps{counter-reset:s;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));padding:0;margin:0}
+.steps li{list-style:none;counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:26px}
+.steps li::before{content:counter(s,decimal-leading-zero);display:block;font:650 2.6rem var(--font);letter-spacing:-.05em;background:linear-gradient(135deg,var(--brand),#A855F7);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 22px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600;font-size:1.05rem}
+
+/* ===== 11. PACOTES: o destacado tem borda em degradé (Stripe) ===== */
+.plan{display:flex;flex-direction:column;gap:6px;padding:30px 26px}
+.plan h3{font-size:1.7rem;margin:0}
+.plan ul{padding:0;margin:14px 0 26px;list-style:none;display:grid;gap:10px;color:var(--muted)}
+.plan li::before{content:"✓ ";color:var(--ok);font-weight:700}
+.plan .btn{margin-top:auto}
+.price{font:700 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+.plan.feat{border:1px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(135deg,#4F6BFF,#A855F7,#22D3EE) border-box}
+
+/* ===== 12. FORMULÁRIO ===== */
+form{display:grid;gap:16px}
+label{font:600 .72rem var(--mono);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:6px;color:var(--muted)}
+input,select,textarea{width:100%;min-height:50px;padding:12px 16px;border-radius:14px;border:1px solid var(--line2);background:var(--surface);color:var(--ink);font:1rem var(--font)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--brand);box-shadow:0 0 0 4px color-mix(in srgb,var(--brand) 22%,transparent)}
+textarea{min-height:130px;resize:vertical}
+.err{color:#F87171;font-size:.85rem;min-height:1.1em;margin-top:4px}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.check{display:flex;gap:10px;align-items:flex-start;font:.85rem var(--font);color:var(--muted);text-transform:none;letter-spacing:0}
+.check input{width:22px;min-height:22px;margin-top:2px}
+.trust{display:flex;flex-wrap:wrap;gap:10px;font:.7rem var(--mono);color:var(--muted)}
+.trust span{border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+.ok{color:var(--ok);font-weight:700}
+
+/* ===== 13. FOOTER com marca gigante esfumada (Vercel/Linear) ===== */
+footer{background:var(--foot);color:#C3CBE0;padding:80px 0 20px;overflow:hidden;border-top:1px solid rgba(255,255,255,.08)}
+footer p{color:#8E97AD}
+footer::after{content:"NEXA STUDIO" / "";display:block;font-weight:800;font-size:clamp(2.6rem,13vw,10.5rem);letter-spacing:-.06em;line-height:.9;margin-top:36px;white-space:nowrap;background:linear-gradient(180deg,rgba(255,255,255,.16),transparent 85%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.socials{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:20px 0}
+.socials a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid rgba(255,255,255,.12);border-radius:999px;text-decoration:none;color:#E6EDFF;font-size:.9rem;font-weight:500;transition:background .15s}
+.socials a:hover{background:rgba(255,255,255,.07)}
+
+/* ===== 14. ACESSIBILIDADE, WHATSAPP, LEGAIS, PROGRESSO ===== */
+.skip{position:absolute;left:12px;top:-60px;background:var(--brand);color:#fff;padding:12px 18px;border-radius:999px;z-index:99;font-weight:700}
+.skip:focus{top:calc(8px + env(safe-area-inset-top,0px))}
+#bar{position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#4F6BFF,#A855F7,#22D3EE);transform:scaleX(0);transform-origin:0 50%;z-index:60}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;background:#10B981;color:#04140D;text-decoration:none;font-weight:700;border-radius:999px;min-height:52px;padding:0 22px;display:none;align-items:center;box-shadow:0 10px 30px -8px rgba(16,185,129,.7)}
+@media(max-width:860px){.wa{display:inline-flex}}
+.wa[hidden]{display:none!important}
+.modal{display:none;position:fixed;inset:0;z-index:80;background:rgba(3,5,10,.8);backdrop-filter:blur(6px);padding:20px;overflow:auto}
+.modal:target{display:block}
+.modal .card{max-width:720px;margin:40px auto;background:var(--bg);padding:32px}
+.modal p{color:var(--ink)}
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
+/* Carrossel corre em TODOS os ecrãs: pausa ao passar o rato/tocar; com "reduzir movimento" fica mais lento, nunca parado */
+.logos:hover .track,.logos:active .track,.logos:focus-within .track{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.hero .eyebrow::before{animation:none}.logos .track{animation-duration:140s}}
+/* Responsividade funcional (iOS): 16px impede o zoom automático ao focar; 1 coluna; largura total. Valores iguais aos actuais */
+@media (max-width:860px){input,select,textarea{font-size:16px;width:100%}form{grid-template-columns:1fr}}
