@@ -2,7 +2,7 @@
 // Variáveis de ambiente (NUNCA no código): RESEND_API_KEY, MAIL_TO, MAIL_FROM, ALLOWED_ORIGIN (ex.: https://nexastudio.co.mz)
 
 const SERVICOS = ['Website', 'Branding / UI-UX', 'App / Plataforma', 'E-commerce', 'Outro']; // lista fechada: rejeita valores inventados
-const LIMITE = 5, JANELA = 60 * 60 * 1000; // máx. 5 envios por IP por hora
+const LIMITE = 6, JANELA = 60 * 60 * 1000; // máx. 5 envios por IP por hora
 const registos = new Map(); // IP -> instantes dos envios. Em memória: serve de base; em produção use Upstash Redis/Vercel KV
 
 // htmlspecialchars: converte & < > " ' ` em entidades, para o texto nunca virar HTML no e-mail (anti-XSS)
